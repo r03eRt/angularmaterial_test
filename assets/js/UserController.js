@@ -1,8 +1,9 @@
-app.controller('UserController',['userService',function(userService){
+app.controller('UserController',['userService', ' $mdBottomSheet',function(userService, $mdBottomSheet){
     var self = this;
 
     this.selected     = null;
     this.users        = [ ];
+    
     userService
         .loadAllUsers()
         .then( function( users ) {
@@ -12,6 +13,17 @@ app.controller('UserController',['userService',function(userService){
 
     this.selectUser = function (user) {
         this.selected = user;
-    }
+    };
+    
+    this.makeContact = function (selectedUser) {
+        $mdBottomSheet.show(
+            {
+                controllerAs     : "vm",
+                controller       : [ '$mdBottomSheet', ContactSheetController],
+                templateUrl      : './src/users/view/contactSheet.html',
+                parent           : angular.element(document.getElementById('content'))
+            }
+        );
+    };
 
 }]);
