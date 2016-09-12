@@ -11,12 +11,15 @@
     </head>
     <body layout="column" ng-controller="UserController as ul">
 
-    <md-toolbar>
+    <md-toolbar layout="row">
         <h3>Angular Material</h3>
+        <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" >
+            <md-icon md-svg-icon="menu" ></md-icon>
+        </md-button>
     </md-toolbar>
 
     <div class="container" layout="row" flex>
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')"  md-component-id="left" ng-click="ul.toggleList()"  class="md-whiteframe-4dp">
             <md-list>
                 <md-list-item ng-repeat="u in ul.users">
                     <md-button ng-click="ul.selectUser(u)" ng-class="{'selected' : u === ul.selected }">
@@ -31,6 +34,11 @@
             <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
             <h2>{{ul.selected.name}}</h2>
             <p>{{ul.selected.content}}</p>
+
+            <md-button class="share" >
+                <md-icon md-no-ink md-svg-icon="share" ng-click="ul.shareContact(ul.selected)" ></md-icon>
+            </md-button>
+
         </md-content>
     </div>
 

@@ -39,3 +39,18 @@ md-list-item > button {
   -webkit-transform: scale(0.70);
   -moz-transform:scale(0.70);
 }
+
+.close{
+  transition: 0.8s all linear;
+  position: absolute!important;
+  right: 0!important;
+  cursor: pointer;
+}
+
+.close:hover{
+  transition: 0.8s all linear;
+  position: absolute!important;
+  right: 0!important;
+  cursor: pointer;
+  opacity: 0.5;
+}
